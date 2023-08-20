@@ -1,7 +1,9 @@
 const dotenv = require('dotenv')
 const app = require('./app');
 const mongoose = require('mongoose')
+const cors = require('cors')
 
+app.use(cors());
 dotenv.config({ path: './config.env' })
 const DB = process.env.DATABASE.replace(
     '<password>',

@@ -11,6 +11,12 @@ app.use(express.json({ limit: '10kb' }));
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/tweet', tweetRouter);
 app.use('/api/v1/follow', followRouter);
+app.get("/", (req, res) => {
+  res.send(200).json({
+    status: "Okay",
+    message: "server is up"
+  })
+})
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });

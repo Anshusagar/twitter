@@ -10,4 +10,6 @@ router.route('/')
     .patch(tweetController.editTweet)
     .delete(tweetController.deleteTweet);
 
+router.route('/getTweets')
+    .post(authController.protectRoutes, tweetController.getTweetById)
 module.exports = router;

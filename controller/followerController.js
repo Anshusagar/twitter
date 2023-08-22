@@ -1,4 +1,5 @@
-const Follower = require('../models/followerModel')
+const Follower = require('../models/followerModel');
+const AppError = require('../utils/AppError');
 
 
 exports.followUser = async (req, res) => {
@@ -19,5 +20,23 @@ exports.followUser = async (req, res) => {
 
 }
 exports.unfollowUser = (req, res) => {
+
+}
+exports.getFollowerList = async (req, res) => {
+    let followers = req.query.userId;
+    
+    try {
+        let follwingList = await Follower.find({ followers });
+        console.log(followers);
+        res.status(200).json({
+            status: "Success",
+            data: {
+                follwingList
+            }
+        })
+    }
+    catch (err) {
+        return new AppError("Something went wrong", 404);
+    }
 
 }

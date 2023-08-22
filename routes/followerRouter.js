@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.route('/')
     .post(followController.followUser)
-    .get(followController.unfollowUser);
+    .get(followController.getFollowerList);
 
 module.exports = router;
